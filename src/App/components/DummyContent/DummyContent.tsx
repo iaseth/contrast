@@ -2,7 +2,7 @@
 
 
 export const DUMMY_CONTENT_PROPS = [
-	'lorem', 'dummy'
+	'aboutApp', 'aboutMe', 'lorem', 'dummy'
 ];
 
 interface DummyContentProps {
@@ -14,6 +14,20 @@ export default function DummyContent ({
 }: DummyContentProps) {
 	function getContent () {
 		switch (content) {
+			case "aboutApp":
+				return (
+					<>
+						<h1>Contrast</h1>
+						<p>This is just some dummy content.</p>
+					</>
+				);
+			case "aboutMe":
+				return (
+					<>
+						<h1>Ankur Seth</h1>
+						<p>This is just some dummy content.</p>
+					</>
+				);
 			case "lorem":
 				return (
 					<>
@@ -32,7 +46,7 @@ export default function DummyContent ({
 	}
 
 	return (
-		<article className="px-4 py-6 max-w-xl mx-auto">
+		<article className="px-6 py-6 max-w-xl mx-auto text-left">
 			{getContent()}
 		</article>
 	);

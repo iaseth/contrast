@@ -31,7 +31,7 @@ export default function App () {
 
 	return (
 		<div className="min-h-screen select-none" style={style} onClick={nextContent}>
-			<section className='text-center py-48'>
+			<section className='py-48'>
 				<DummyContent content={content} />
 
 				<section className='px-4 py-6 grid grid-cols-4'>
