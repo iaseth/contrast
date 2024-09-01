@@ -1,4 +1,4 @@
-import { TailwindColorDS, TailwindColorShadeDS, tailwindColors } from "../../../data";
+import { getHexColor } from "../../../data";
 
 
 
@@ -15,10 +15,9 @@ export default function ColorSquare ({
 	size=40,
 	onClick = () => {}
 }: ColorSquareProps) {
-	const color: TailwindColorDS = tailwindColors.find(c => c.name === baseColorName) || tailwindColors[0];
-	const shade: TailwindColorShadeDS = color.shades.find(c => c.shade === shadeName) || color.shades[0];
+	const hexColor: string = getHexColor(baseColorName, shadeName);
 	const style = {
-		backgroundColor: shade.hex,
+		backgroundColor: hexColor,
 		height: `${size}px`,
 		width: `${size}px`
 	};
