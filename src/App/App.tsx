@@ -2,15 +2,20 @@ import './App.css';
 
 import { red } from 'redicons';
 import rediconsJson from './redicons.json';
-import { ColorSquare } from './components';
+import { ColorSquare, DummyContent } from './components';
 import React from 'react';
 import { getHexColor } from './data';
+import { DUMMY_CONTENT_PROPS } from './components/DummyContent/DummyContent';
 
 
 
 red.addIcons(rediconsJson.icons);
 
 export default function App () {
+	const [contentIndex, setContentIndex] = React.useState(0);
+	const content = DUMMY_CONTENT_PROPS[contentIndex];
+	const nextContent = () => setContentIndex(x => (x+1) % DUMMY_CONTENT_PROPS.length);
+
 	const [bgBaseColor, setBgBaseColor] = React.useState('zinc');
 	const [bgBaseShade, setBgBaseShade] = React.useState('100');
 	const bgHexColor = getHexColor(bgBaseColor, bgBaseShade);
@@ -25,10 +30,9 @@ export default function App () {
 	}
 
 	return (
-		<div className="min-h-screen" style={style}>
-			<section className='max-w-sm mx-auto text-center py-12'>
-				<h1 className='H4'>Foo</h1>
-				<p>This is just some text.</p>
+		<div className="min-h-screen select-none" style={style} onClick={nextContent}>
+			<section className='text-center py-48'>
+				<DummyContent content={content} />
 
 				<section className='px-4 py-6 grid grid-cols-4'>
 					<ColorSquare baseColorName={bgBaseColor} shadeName={bgBaseShade} />
