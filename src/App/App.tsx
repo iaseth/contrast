@@ -1,7 +1,5 @@
 import './App.css';
 
-import MainPage from './pages/MainPage/MainPage';
-
 import { red } from 'redicons';
 import rediconsJson from './redicons.json';
 
@@ -11,8 +9,11 @@ red.addIcons(rediconsJson.icons);
 export default function App () {
 
 	return (
-		<div className="bg-zinc-900 text-white">
-			<MainPage />
+		<div className="min-h-screen">
+			<section className='text-center py-12'>
+				<h1 className='H4'>Foo</h1>
+				<p>This is just some text.</p>
+			</section>
 		</div>
 	);
 }
