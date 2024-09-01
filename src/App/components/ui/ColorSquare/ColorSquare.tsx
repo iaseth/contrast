@@ -15,6 +15,7 @@ export default function ColorSquare ({
 	size=40,
 	onClick = () => {}
 }: ColorSquareProps) {
+	const tooltip = `${baseColorName}-${shadeName}`;
 	const hexColor: string = getHexColor(baseColorName, shadeName);
 	const style = {
 		backgroundColor: hexColor,
@@ -23,7 +24,7 @@ export default function ColorSquare ({
 	};
 
 	return (
-		<div className="group relative rounded cursor-pointer" style={style} onClick={onClick}>
+		<div className="group relative rounded cursor-pointer" style={style} onClick={onClick} title={tooltip}>
 			<div className="absolute h-full w-full border-2 border-black/50 opacity-0 group-hover:opacity-100"></div>
 		</div>
 	);
