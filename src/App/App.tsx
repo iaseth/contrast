@@ -2,7 +2,7 @@ import './App.css';
 
 import { red } from 'redicons';
 import rediconsJson from './redicons.json';
-import { ColorSquare, DummyContent } from './components';
+import { ColorSquare, DummyContent, Header } from './components';
 import React from 'react';
 import { getHexColor } from './data';
 import { DUMMY_CONTENT_PROPS } from './components/DummyContent/DummyContent';
@@ -30,8 +30,10 @@ export default function App () {
 	}
 
 	return (
-		<div className="min-h-screen select-none" style={style} onClick={nextContent}>
+		<div className="min-h-screen relative select-none" style={style} onClick={nextContent}>
 			<section className='py-48'>
+				<Header />
+
 				<DummyContent content={content} />
 
 				<section className='px-4 py-6 grid grid-cols-4'>
