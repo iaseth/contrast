@@ -2,7 +2,7 @@ import './App.css';
 
 import { red } from 'redicons';
 import rediconsJson from './redicons.json';
-import { ColorSquare, DummyContent, Header } from './components';
+import { ColorSelector, ColorSquare, DummyContent, Header, HeaderButton } from './components';
 import React from 'react';
 import { getHexColor } from './data';
 import { DUMMY_CONTENT_PROPS } from './components/DummyContent/DummyContent';
@@ -24,6 +24,19 @@ export default function App () {
 	const [textBaseShade, setTextBaseShade] = React.useState('700');
 	const textHexColor = getHexColor(textBaseColor, textBaseShade);
 
+	const [showBgPicker, setShowBgPicker] = React.useState(false);
+	const [showTextPicker, setShowTextPicker] = React.useState(false);
+
+	const toggleBgPicker = () => {
+		setShowTextPicker(false);
+		setShowBgPicker(x => !x);
+	};
+
+	const toggleTextPicker = () => {
+		setShowBgPicker(false);
+		setShowTextPicker(x => !x);
+	};
+
 	const style = {
 		backgroundColor: bgHexColor,
 		color: textHexColor
@@ -31,9 +44,21 @@ export default function App () {
 
 	return (
 		<div className="min-h-screen relative select-none" style={style} onClick={nextContent}>
-			<section className='py-48'>
-				<Header {...{bgHexColor, textHexColor}} />
+			<header className="absolute top-12 left-1/2 -translate-x-1/2 w-full max-w-xl px-4" onClick={e => e.stopPropagation()}>
+				<section className="">
+					<header className="bg-zinc-100 grid grid-cols-2 gap-1 mb-1 text-center">
+						<HeaderButton text="Background" hexColor={bgHexColor} onClick={toggleBgPicker} />
+						<HeaderButton text="Text" hexColor={textHexColor} onClick={toggleTextPicker} />
+					</header>
 
+					<footer>
+						{showBgPicker && <ColorSelector className="text-left" />}
+						{showTextPicker && <ColorSelector className="text-right" />}
+					</footer>
+				</section>
+			</header>
+
+			<section className='py-48'>
 				<DummyContent content={content} />
 
 				<section className='px-4 py-6 grid grid-cols-4'>
