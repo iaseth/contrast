@@ -32,7 +32,7 @@ export default function App () {
 	return (
 		<div className="min-h-screen relative select-none" style={style} onClick={nextContent}>
 			<section className='py-48'>
-				<Header />
+				<Header {...{bgHexColor, textHexColor}} />
 
 				<DummyContent content={content} />
 
