@@ -1,8 +1,4 @@
 
 
 
-export function Button () {
-	return (
-		<button>Ok</button>
-	);
-}
+export { default as ColorSquare } from './ColorSquare/ColorSquare';
